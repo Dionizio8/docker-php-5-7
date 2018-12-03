@@ -4,9 +4,6 @@ php:
    - "8080:80"
    - "443:443"
   volumes:
-   - ./www/html/alianza:/var/www/html/alianza
-   - ./www/html:/var/www/html
-   - ./www/alianza:/var/www/alianza
    - ./www:/var/www
   links:
    - db
@@ -17,3 +14,4 @@ db:
   environment:
    - MYSQL_ROOT_PASSWORD=root
    - MYSQL_DATABASE=dionizio1997
+
