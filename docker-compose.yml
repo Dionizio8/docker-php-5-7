@@ -1,17 +1,26 @@
-php:
+php5:
   build: .
+  dockerfile: Dockerfile5
   ports:
    - "8080:80"
-   - "443:443"
   volumes:
-   - ./www:/var/www
+   - ./www:/var/www/
+  links:
+   - db
+php7:
+  build: .
+  dockerfile: Dockerfile7
+  ports:
+   - "8090:80"
+  volumes:
+   - ./www:/var/www/
   links:
    - db
 db:
   image: mysql:5.7
+  ports:
+   - "3300:3306"
   volumes:
    - /var/lib/mysql
-  environment:
-   - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=dionizio1997
-
+  environment: 
+   - MYSQL_ROOT_PASSWORD=123
