@@ -1,7 +1,7 @@
 FROM php:5.6-apache
 
 RUN docker-php-ext-install pdo_mysql mysqli \
-  && a2enmod rewrite
+&& a2enmod rewrite
 
 RUN apt-get update && apt-get install -y --no-install-recommends libfreetype6-dev \
 libjpeg62-turbo-dev \
@@ -17,5 +17,9 @@ wget \
 && docker-php-ext-install gd \
 && docker-php-ext-configure zip --with-libzip=/usr/include/ \
 && docker-php-ext-install zip 
+
+RUN apt-get update && \
+    apt-get install -y libmcrypt-dev
+RUN docker-php-ext-install mcrypt
 
 WORKDIR /var/www
